@@ -157,7 +157,7 @@ int main() {
     string name_eq = system_name + "_eq";
     simulate(data_folder, name_eq, p, init_eq, T, dt);
 
-    State init_original(800, 1500);
+    State init_original(600, 1000);
     string name_original = system_name + "_original_x0_lt_y0";
     simulate(data_folder, name_original, p, init_original, T, dt);
 
