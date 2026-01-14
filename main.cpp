@@ -118,7 +118,6 @@ int main() {
     SetConsoleOutputCP(1251);
     SetConsoleCP(1251);
 
-    // === ПАПКИ ===
     string base_folder = "C:\\Users\\Veronika\\Desktop\\ChM_laba8";
     string data_folder = base_folder + "\\data";
     string graphs_folder = base_folder + "\\graphs";
@@ -132,49 +131,26 @@ int main() {
     cout << "  " << data_folder << endl;
     cout << "  " << graphs_folder << endl;
 
-    // === ПАРАМЕТРЫ МОДЕЛИ (МЕНЯЙТЕ ЗДЕСЬ) ===
-    // СИСТЕМА 1: СОВЫ-МЫШИ (медленная)
     string system_name = "Пауки_Мухи";
 
-    // Параметры модели
-    double alpha = 0.45;    // рождаемость жертв
-    double beta = 0.00125;   // успешность охоты
-    double gamma = 0.65;    // смертность хищников
-    double delta = 0.00085;  // воспроизводство хищников
+    double alpha = 0.45;    
+    double beta = 0.00125;  
+    double gamma = 0.65;    
+    double delta = 0.00085;  
 
-    // Начальные условия
-    double init_prey = 4000;    // начальное количество жертв
-    double init_predator = 300;  // начальное количество хищников
+    double init_prey = 4000;   
+    double init_predator = 300;  
 
-    // Параметры моделирования
-    double T = 800.0;   // время моделирования
-    double dt = 0.005;  // шаг интегрирования
+    double T = 800.0;  
+    double dt = 0.005;  
 
-    // === МОДЕЛИРОВАНИЕ ===
     Params p(alpha, beta, gamma, delta);
     State init(init_prey, init_predator);
 
     simulate(data_folder, system_name, p, init, T, dt);
 
-    cout << "\n=== ПАРАМЕТРЫ МОДЕЛИ ===" << endl;
-    cout << "Название системы: " << system_name << endl;
-    cout << "α = " << alpha << " (рождаемость жертв)" << endl;
-    cout << "β = " << beta << " (успешность охоты)" << endl;
-    cout << "γ = " << gamma << " (смертность хищников)" << endl;
-    cout << "δ = " << delta << " (воспроизводство хищников)" << endl;
-    cout << "\nНачальные условия:" << endl;
-    cout << "Жертвы = " << init_prey << endl;
-    cout << "Хищники = " << init_predator << endl;
-    cout << "\nПараметры моделирования:" << endl;
-    cout << "Время = " << T << endl;
-    cout << "Шаг = " << dt << endl;
-
-    // Точка равновесия
     double eq_prey = gamma / delta;
     double eq_predator = alpha / beta;
-    cout << "\nТочка равновесия:" << endl;
-    cout << "Жертвы = " << eq_prey << endl;
-    cout << "Хищники = " << eq_predator << endl;
 
     return 0;
 }
